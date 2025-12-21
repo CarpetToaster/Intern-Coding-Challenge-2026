@@ -40,7 +40,10 @@ namespace Solution
         } 
 
         /**
-        * Remember to use Delegate(args) {compareReadings(args);} as the argument for comparator
+        * Remember to use Delegate(args) {compareReadings(args);} as the argument for comparator.
+        * In this case, the callback isn't necessary since a) only one type of comparison will take place,
+        * and b) an interface with a comparison function could also be used. I went with the callback since
+        * it was just interesting to learn about, and not something I've used in a while.
         */
         protected Reading Search(List<Reading> readings, Func<Reading, Reading, bool> compare, Reading target)
         {
@@ -53,9 +56,15 @@ namespace Solution
             {
                 if (compare(target, r) == true)
                 {
+                    readings.Remove(r);
                     return r;
                 }
             }
+        }
+
+        protected void JSONifyResult()
+        {
+            
         }
     }
 }
