@@ -1,4 +1,4 @@
-using System.Text.Json;
+﻿using System.Text.Json;
 using System.Xml;
 
 namespace Solution
@@ -7,15 +7,16 @@ namespace Solution
     {
         public class Reading
         {
-            public int Id { get; set; }  
-            public double Latitude { get; set; }
-            public double Longitude { get; set; }
+            public int id { get; set; }  
+            public double latitude { get; set; }
+            public double longitude { get; set; }
         }
 
 
         public static bool CompareReadings(Reading r1, Reading r2)
         {
-            if (Math.Abs(r1.Latitude - r2.Latitude) < 0.001 && Math.Abs(r1.Longitude - r2.Longitude) < 0.001)
+            Console.WriteLine(r1.id + ", " + r2.id + ": " + Math.Abs(r1.latitude - r2.latitude) + ", " + Math.Abs(r1.longitude - r2.longitude));
+            if (Math.Abs(r1.latitude - r2.latitude) < 0.0015 && Math.Abs(r1.longitude - r2.longitude) < 0.0015)
             {
                 return true;
             }
@@ -43,7 +44,7 @@ namespace Solution
         {
             var entries = pairs.Select
             (
-                i => string.Format("{0}: {1}", i.Key, i.Value) 
+                i => string.Format("\t\"{0}\": {1}", i.Key, i.Value) 
             );
             string finalResult = "{\n" + string.Join(",\n", entries) + "\n}";
             File.WriteAllText(filename, finalResult);
@@ -58,11 +59,15 @@ namespace Solution
             foreach (string readingString in splitReadings)
             {
                 string[] fields = readingString.Split(",");
+                if (fields[0] == "")
+                {
+                    continue;
+                }
                 Reading reading = new()
                 {
-                    Id = int.Parse(fields[0]),
-                    Latitude = double.Parse(fields[1]),
-                    Longitude = double.Parse(fields[2])
+                    id = int.Parse(fields[0]),
+                    latitude = double.Parse(fields[1]),
+                    longitude = double.Parse(fields[2])
                 };
                 buf.Add(reading);
             }
@@ -73,11 +78,16 @@ namespace Solution
             string allReadings = File.ReadAllText(filename);
             allReadings = allReadings.Replace("[", "");
             allReadings = allReadings.Replace("]", "");
-            string[] splitReadings = allReadings.Split(",");
+            string[] splitReadings = allReadings.Split("},", StringSplitOptions.RemoveEmptyEntries);
 
             foreach (string readingString in splitReadings)
             {
-                Reading reading = JsonSerializer.Deserialize<Reading>(readingString)!;
+                string compare = readingString.Trim();
+                if (compare[^1] != '}')
+                {
+                    compare += "}";
+                }
+                Reading reading = JsonSerializer.Deserialize<Reading>(compare)!;
                 buf.Add(reading);
             }
         }
@@ -86,9 +96,9 @@ namespace Solution
         {
             string[] filenames =
             [
-                "../Samples/SampleData1.csv",
-                "../Samples/SampleData2.json",
-                "../Output.json"
+                "../../../../SensorData1.csv",
+                "../../../../SensorData2.json",
+                "../../../../Output.json"
             ];
 
             Dictionary<string, int> pairs = [];
@@ -106,7 +116,7 @@ namespace Solution
                 {
                     continue;
                 }
-                pairs.Add(r.Id.ToString(), match.Id);
+                pairs.Add(r.id.ToString(), match.id);
             }
 
             JSONifyResult(filenames[2], pairs);

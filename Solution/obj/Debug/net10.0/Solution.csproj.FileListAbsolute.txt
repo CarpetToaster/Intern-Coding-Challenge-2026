@@ -1,0 +1,15 @@
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\bin\Debug\net10.0\Solution.exe
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\bin\Debug\net10.0\Solution.deps.json
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\bin\Debug\net10.0\Solution.runtimeconfig.json
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\bin\Debug\net10.0\Solution.dll
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\bin\Debug\net10.0\Solution.pdb
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\obj\Debug\net10.0\Solution.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\obj\Debug\net10.0\Solution.AssemblyInfoInputs.cache
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\obj\Debug\net10.0\Solution.AssemblyInfo.cs
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\obj\Debug\net10.0\Solution.csproj.CoreCompileInputs.cache
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\obj\Debug\net10.0\Solution.sourcelink.json
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\obj\Debug\net10.0\Solution.dll
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\obj\Debug\net10.0\refint\Solution.dll
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\obj\Debug\net10.0\Solution.pdb
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\obj\Debug\net10.0\Solution.genruntimeconfig.cache
+C:\Users\david\OneDrive\Desktop\Job App challenge\Intern-Coding-Challenge-2026\Solution\obj\Debug\net10.0\ref\Solution.dll
