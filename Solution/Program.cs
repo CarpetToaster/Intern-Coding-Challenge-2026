@@ -1,6 +1,10 @@
 ﻿using System.Text.Json;
 using System.Xml;
 
+// I'm taking this challenge as an opportuniy to somewhat familiarize myself with C#,
+// following basic conventions and familiarizing myself with building the exectuable, most notably.
+
+// this was written in .NET 10.0.1
 namespace Solution
 {
     class Solution
@@ -12,10 +16,9 @@ namespace Solution
             public double longitude { get; set; }
         }
 
-
+        // correlate using a simple difference. 
         public static bool CompareReadings(Reading r1, Reading r2)
         {
-            Console.WriteLine(r1.id + ", " + r2.id + ": " + Math.Abs(r1.latitude - r2.latitude) + ", " + Math.Abs(r1.longitude - r2.longitude));
             if (Math.Abs(r1.latitude - r2.latitude) < 0.0015 && Math.Abs(r1.longitude - r2.longitude) < 0.0015)
             {
                 return true;
@@ -27,6 +30,9 @@ namespace Solution
 
         } 
 
+        // Perhaps using a dictionary where lat or long is the key could reduce the total time complexity
+        // down from O(n^2). Issue is using a double as the key, since they can be so imprecise. Even trimming them 
+        // may require some extra work. 
         public static Reading? Search(List<Reading> readings, Reading target)
         {
             foreach (Reading r in readings)
