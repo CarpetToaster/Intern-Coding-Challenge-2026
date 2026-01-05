@@ -1,4 +1,4 @@
-﻿using System.Text.Json;
+using System.Text.Json;
 using System.Xml;
 
 // I'm taking this challenge as an opportuniy to somewhat familiarize myself with C#,
