@@ -1,10 +1,11 @@
 ﻿using System.Text.Json;
-using System.Xml;
+using Iot.Device.Common;
 
 // I'm taking this challenge as an opportuniy to somewhat familiarize myself with C#,
 // following basic conventions and familiarizing myself with building the exectuable, most notably.
 
-// to run this, you should move the code in Solution.cs to a project (as I have) and run the project.
+// I ran this through VSCode with the Solution.slnx file included in the parent directory of the repo clone.
+// if there are any issues regarding line 2, please use dotnet add package Iot.Device.Bindings --version 4.0.1.
 
 // this was written in .NET 10.0.1
 namespace Solution
@@ -18,10 +19,10 @@ namespace Solution
             public double Longitude { get; set; }
         }
 
-        // correlate using a simple difference. 
         public static bool CompareReadings(Reading r1, Reading r2)
         {
-            if (Math.Abs(r1.Latitude - r2.Latitude) < 0.0015 && Math.Abs(r1.Longitude - r2.Longitude) < 0.0015)
+            GreatCircle.DistAndDir(r1.Latitude, r1.Longitude, r2.Latitude, r2.Longitude, out double dist, out _);
+            if (Math.Abs(dist) < 100)
             {
                 return true;
             }
@@ -32,9 +33,7 @@ namespace Solution
 
         } 
 
-        // Perhaps using a dictionary where lat or long is the key could reduce the total time complexity
-        // down from O(n^2). Issue is using a double as the key, since they can be so imprecise. Even trimming them 
-        // may require some extra work. 
+        // using a dictionary or other hashmap here could be an optiomization.
         public static Reading? Search(List<Reading> readings, Reading target)
         {
             foreach (Reading r in readings)
